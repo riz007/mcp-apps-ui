@@ -69,10 +69,16 @@ export function applyHost(
   host: "claude" | "standalone",
   theme: Theme,
   textScale: number,
+  isStory: boolean,
 ) {
-  root.dataset.theme = theme
   root.dataset.host = host
-  root.style.colorScheme = theme
+  if (isStory) {
+    root.dataset.theme = theme
+    root.style.colorScheme = theme
+  } else {
+    delete root.dataset.theme
+    root.style.removeProperty("color-scheme")
+  }
 
   for (const key of colorKeys) {
     if (host === "claude") {

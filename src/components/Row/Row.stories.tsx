@@ -33,5 +33,5 @@ export const Between: Story = {
 
 export const Narrow: Story = {
   name: "Wraps at 320px",
-  globals: { width: "320" },
+  globals: { width: "320px" },
 }

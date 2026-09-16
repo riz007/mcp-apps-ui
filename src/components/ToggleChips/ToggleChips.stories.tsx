@@ -34,7 +34,7 @@ export const NoneSelected: Story = {
 }
 
 export const Narrow: Story = {
-  globals: { width: "320" },
+  globals: { width: "320px" },
 }
 
 export const Disabled: Story = {

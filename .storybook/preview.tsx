@@ -4,10 +4,16 @@ import { DocsContainer } from "./DocsContainer"
 import { applyHost, type Theme } from "./hostStyles"
 import "./preview.css"
 
+const textScales: Record<string, number> = {
+  normal: 1,
+  large: 1.5,
+  larger: 2,
+}
+
 const widths: Record<string, string | undefined> = {
-  "320": "320px",
-  "420": "420px",
-  "768": "768px",
+  "320px": "320px",
+  "420px": "420px",
+  "768px": "768px",
   full: undefined,
 }
 
@@ -22,7 +28,7 @@ type HostFrameProps = {
 
 function HostFrame({ theme, host, textScale, width, isStory, children }: HostFrameProps) {
   useEffect(() => {
-    applyHost(document.documentElement, host, theme, textScale)
+    applyHost(document.documentElement, host, theme, textScale, isStory)
     document.body.style.backgroundColor = isStory ? "var(--mcp-bg-primary)" : ""
   }, [host, theme, textScale, isStory])
 
@@ -41,7 +47,7 @@ const withHost: Decorator = (Story, { globals, viewMode }) => (
   <HostFrame
     theme={globals.theme === "dark" ? "dark" : "light"}
     host={globals.host === "standalone" ? "standalone" : "claude"}
-    textScale={Number(globals.textScale ?? 1)}
+    textScale={textScales[String(globals.textScale)] ?? 1}
     width={widths[String(globals.width ?? "full")]}
     isStory={viewMode === "story"}
   >
@@ -56,7 +62,7 @@ const preview: Preview = {
     theme: import.meta.env.STORY_THEME ?? "light",
     host: "claude",
     width: import.meta.env.STORY_WIDTH ?? "full",
-    textScale: "1",
+    textScale: "normal",
   },
   globalTypes: {
     theme: {
@@ -77,9 +83,9 @@ const preview: Preview = {
         title: "Width",
         icon: "grow",
         items: [
-          { value: "320", title: "320px (minimum)" },
-          { value: "420", title: "420px (inline card)" },
-          { value: "768", title: "768px (tablet)" },
+          { value: "320px", title: "320px (minimum)" },
+          { value: "420px", title: "420px (inline card)" },
+          { value: "768px", title: "768px (tablet)" },
           { value: "full", title: "Full width" },
         ],
         dynamicTitle: true,
@@ -91,9 +97,9 @@ const preview: Preview = {
         title: "Text size",
         icon: "paragraph",
         items: [
-          { value: "1", title: "Text 100%" },
-          { value: "1.5", title: "Text 150%" },
-          { value: "2", title: "Text 200%" },
+          { value: "normal", title: "Text 100%" },
+          { value: "large", title: "Text 150%" },
+          { value: "larger", title: "Text 200%" },
         ],
         dynamicTitle: true,
       },

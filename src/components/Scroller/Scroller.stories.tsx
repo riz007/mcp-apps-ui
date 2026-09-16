@@ -56,7 +56,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {}
 
 export const Mobile: Story = {
-  globals: { width: "320" },
+  globals: { width: "320px" },
 }
 
 export const SafeAreaPadding: Story = {

@@ -26,7 +26,7 @@ function storiesProject(theme: "light" | "dark") {
     ],
     define: {
       "import.meta.env.STORY_THEME": JSON.stringify(theme),
-      "import.meta.env.STORY_WIDTH": JSON.stringify("320"),
+      "import.meta.env.STORY_WIDTH": JSON.stringify("320px"),
     },
     test: {
       name: `stories-${theme}`,

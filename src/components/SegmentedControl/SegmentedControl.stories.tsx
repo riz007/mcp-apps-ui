@@ -45,7 +45,7 @@ export const HiddenLabel: Story = {
 
 export const Wrapping: Story = {
   name: "Wraps instead of scrolling",
-  globals: { width: "320" },
+  globals: { width: "320px" },
   args: {
     label: "Time",
     options: ["5:30", "6:00", "6:30", "7:00", "7:30", "8:00", "8:30"].map((t) => ({

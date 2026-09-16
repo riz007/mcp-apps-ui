@@ -9,7 +9,7 @@ export type BadgeProps = Omit<HTMLAttributes<HTMLSpanElement>, "color"> & {
 
 const colorClasses: Record<Tone, string> = {
   neutral: "border-subtle bg-surface text-secondary",
-  info: "border-info bg-info text-primary",
+  info: "border-transparent bg-info text-primary",
   success: "border-transparent bg-success text-success",
   warning: "border-transparent bg-warning text-warning",
   danger: "border-transparent bg-danger text-danger",

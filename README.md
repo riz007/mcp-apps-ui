@@ -218,6 +218,8 @@ npm run lint && npm run types && npm test && npm run test:stories
 
 `test:stories` renders every story in light and dark at 320px and fails on axe violations, tap targets under 44×44, or horizontal overflow.
 
+See [AGENTS.md](./AGENTS.md) for conventions.
+
 ## Licence
 
 MIT.

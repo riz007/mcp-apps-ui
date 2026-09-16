@@ -1,0 +1,127 @@
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --color-*: initial;
+
+  --background-color-canvas: var(--mcp-bg-primary);
+  --background-color-surface: var(--mcp-bg-secondary);
+  --background-color-surface-tertiary: var(--mcp-bg-tertiary);
+  --background-color-inverse: var(--mcp-bg-inverse);
+  --background-color-ghost: var(--mcp-bg-ghost);
+  --background-color-info: var(--mcp-bg-info);
+  --background-color-danger: var(--mcp-bg-danger);
+  --background-color-success: var(--mcp-bg-success);
+  --background-color-warning: var(--mcp-bg-warning);
+  --background-color-disabled: var(--mcp-bg-disabled);
+  --background-color-danger-strong: var(--mcp-border-danger);
+  --background-color-accent: var(--mcp-accent);
+
+  --text-color-primary: var(--mcp-text-primary);
+  --text-color-secondary: var(--mcp-text-secondary);
+  --text-color-tertiary: var(--mcp-text-tertiary);
+  --text-color-inverse: var(--mcp-text-inverse);
+  --text-color-ghost: var(--mcp-text-ghost);
+  --text-color-info: var(--mcp-text-info);
+  --text-color-danger: var(--mcp-text-danger);
+  --text-color-success: var(--mcp-text-success);
+  --text-color-warning: var(--mcp-text-warning);
+  --text-color-disabled: var(--mcp-text-disabled);
+  --text-color-accent: var(--mcp-accent);
+  --text-color-accent-contrast: var(--mcp-accent-contrast);
+
+  --border-color-default: var(--mcp-border-primary);
+  --border-color-secondary: var(--mcp-border-secondary);
+  --border-color-subtle: var(--mcp-border-tertiary);
+  --border-color-inverse: var(--mcp-border-inverse);
+  --border-color-ghost: var(--mcp-border-ghost);
+  --border-color-info: var(--mcp-border-info);
+  --border-color-danger: var(--mcp-border-danger);
+  --border-color-success: var(--mcp-border-success);
+  --border-color-warning: var(--mcp-border-warning);
+  --border-color-disabled: var(--mcp-border-disabled);
+  --border-color-accent: var(--mcp-accent);
+
+  --divide-color-default: var(--mcp-border-primary);
+  --divide-color-subtle: var(--mcp-border-tertiary);
+
+  --outline-color-ring: var(--mcp-ring-primary);
+  --outline-color-ring-danger: var(--mcp-ring-danger);
+  --ring-color-ring: var(--mcp-ring-primary);
+
+  --default-font-family: var(--mcp-font-sans);
+  --default-mono-font-family: var(--mcp-font-mono);
+  --default-border-width: var(--mcp-border-width);
+
+  --text-*: initial;
+  --text-xs: var(--mcp-text-xs-size);
+  --text-xs--line-height: var(--mcp-text-xs-line-height);
+  --text-sm: var(--mcp-text-sm-size);
+  --text-sm--line-height: var(--mcp-text-sm-line-height);
+  --text-md: var(--mcp-text-md-size);
+  --text-md--line-height: var(--mcp-text-md-line-height);
+  --text-base: var(--mcp-text-md-size);
+  --text-base--line-height: var(--mcp-text-md-line-height);
+  --text-lg: var(--mcp-text-lg-size);
+  --text-lg--line-height: var(--mcp-text-lg-line-height);
+
+  --radius-*: initial;
+  --radius-xs: var(--mcp-radius-xs);
+  --radius-sm: var(--mcp-radius-sm);
+  --radius-md: var(--mcp-radius-md);
+  --radius-lg: var(--mcp-radius-lg);
+  --radius-xl: var(--mcp-radius-xl);
+  --radius-full: var(--mcp-radius-full);
+}
+
+@utility heading-xs {
+  font-size: var(--mcp-heading-xs-size);
+  line-height: var(--mcp-heading-xs-line-height);
+  font-weight: var(--mcp-weight-semibold);
+}
+
+@utility heading-sm {
+  font-size: var(--mcp-heading-sm-size);
+  line-height: var(--mcp-heading-sm-line-height);
+  font-weight: var(--mcp-weight-semibold);
+}
+
+@utility heading-md {
+  font-size: var(--mcp-heading-md-size);
+  line-height: var(--mcp-heading-md-line-height);
+  font-weight: var(--mcp-weight-semibold);
+}
+
+@utility heading-lg {
+  font-size: var(--mcp-heading-lg-size);
+  line-height: var(--mcp-heading-lg-line-height);
+  font-weight: var(--mcp-weight-semibold);
+}
+
+@utility heading-xl {
+  font-size: var(--mcp-heading-xl-size);
+  line-height: var(--mcp-heading-xl-line-height);
+  font-weight: var(--mcp-weight-semibold);
+}
+
+@utility heading-2xl {
+  font-size: var(--mcp-heading-2xl-size);
+  line-height: var(--mcp-heading-2xl-line-height);
+  font-weight: var(--mcp-weight-semibold);
+}
+
+@utility heading-3xl {
+  font-size: var(--mcp-heading-3xl-size);
+  line-height: var(--mcp-heading-3xl-line-height);
+  font-weight: var(--mcp-weight-semibold);
+}
+
+@utility shadow-hairline {
+  box-shadow: var(--mcp-shadow-hairline);
+}
+
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--mcp-ring-primary);
+    outline-offset: 2px;
+  }
+}

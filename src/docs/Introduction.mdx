@@ -1,0 +1,28 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Overview/Introduction" />
+
+# mcp-apps-ui
+
+React components and Tailwind tokens for building [MCP Apps](https://claude.com/docs/connectors/building/mcp-apps/design-guidelines) that render inside Claude.
+
+> **Independent project.** Not affiliated with, endorsed by, or sponsored by Anthropic PBC. "Claude" and "Anthropic" are trademarks of Anthropic PBC.
+
+The library gives you three things:
+
+- **Tokens** that read the style variables Claude injects into your app, exposed as Tailwind utilities such as `bg-surface`, `text-secondary` and `heading-md`. Light and dark come from the host.
+- **Components** shaped by the design guidelines. Every control is visible, keyboard operable and at least 44px tall.
+- **Guard rails.** Lint rules and tests that fail when something floats, scrolls vertically, or hardcodes a colour.
+
+## Why not a general component library?
+
+The guidelines rule out dropdowns, context menus, popovers and floating panels. They get clipped by the frame your app lives in and fight the host's z-index. Most React libraries are built around exactly those layers. This one has none of them, so the right choice is also the easy one: a `SegmentedControl` instead of a select, `ToggleChips` instead of a filter menu, `InlineTabs` instead of a drill-in.
+
+## Where to go next
+
+- [Installation](?path=/docs/overview-installation--docs) to add it to a Vite and Tailwind 4 app
+- [Constraints](?path=/docs/overview-constraints--docs) for the rules every component follows
+- [Design tokens](?path=/docs/foundations-design-tokens--docs) for the full utility mapping
+- [Patterns](?path=/story/patterns-examples--inline-card) for complete cards built from the pieces
+
+Use the toolbar above any story to switch theme, width (down to 320px), text size and whether tokens come from a simulated Claude host or the standalone fallback.

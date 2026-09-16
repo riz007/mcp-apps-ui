@@ -1,0 +1,59 @@
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks"
+import { BackgroundTokens, BorderTokens, RadiusTokens, TextTokens, TypeTokens } from "./TokenTables"
+
+<Meta title="Foundations/Design tokens" />
+
+# Design tokens
+
+Claude injects CSS custom properties into every MCP App. `tokens.css` reads them into `--mcp-*` properties, with the published values as fallbacks for hosts that send a partial set, and `theme.css` exposes those as Tailwind utilities. Nothing here redefines a host variable.
+
+Each row previews the published light and dark values side by side.
+
+## Backgrounds
+
+<Unstyled>
+  <BackgroundTokens />
+</Unstyled>
+
+## Text
+
+<Unstyled>
+  <TextTokens />
+</Unstyled>
+
+## Borders
+
+Border width follows `--border-width-regular` (0.5px), so plain `border` already matches the host.
+
+<Unstyled>
+  <BorderTokens />
+</Unstyled>
+
+## Typography
+
+`heading-*` utilities set size, line height and the emphasised weight together. Body text uses `text-xs` to `text-lg`. The default Tailwind size scale beyond `lg` is removed to keep to three levels.
+
+<Unstyled>
+  <TypeTokens />
+</Unstyled>
+
+## Radius
+
+<Unstyled>
+  <RadiusTokens />
+</Unstyled>
+
+## Accent
+
+```css
+:root {
+  --mcp-accent: #c6613f;
+  --mcp-accent-contrast: #ffffff;
+}
+```
+
+The accent fills primary buttons and marks selection in `SegmentedControl`, `ToggleChips`, `InlineTabs`, `Switch` and `Slider`. It defaults to the host's primary text colour. Check the contrast of your pair in both themes; never use the accent for page backgrounds, body text or borders.
+
+## Removed defaults
+
+`theme.css` clears Tailwind's colour palette. `bg-white`, `text-gray-500` and friends don't exist, so a hardcoded colour can't sneak in through a utility class.

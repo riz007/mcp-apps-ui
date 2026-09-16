@@ -1,0 +1,6 @@
+dist
+storybook-static
+coverage
+package-lock.json
+*.md
+*.mdx

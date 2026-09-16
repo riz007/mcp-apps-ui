@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Overview/Constraints" />
+
+# Constraints
+
+These come from the [MCP Apps design guidelines](https://claude.com/docs/connectors/building/mcp-apps/design-guidelines). The library encodes them so you don't have to remember them.
+
+## Nothing floats
+
+No dropdowns, selects, context menus, popovers, overlay tooltips, modals, drawers or floating panels. They get clipped by the container or conflict with the host's z-index.
+
+| Instead of                | Use                                        |
+| ------------------------- | ------------------------------------------ |
+| Select, dropdown          | `SegmentedControl`                         |
+| Filter menu, multi-select | `ToggleChips`                              |
+| Drill-in, nested route    | `InlineTabs`, or ask Claude for fullscreen |
+| Colour picker             | `SwatchRow`                                |
+| Number input spinner      | `Stepper`                                  |
+| Loading spinner           | `Skeleton`                                 |
+
+Only in-flow Radix primitives are used. An ESLint rule rejects imports of the floating ones.
+
+## Inline cards
+
+- Height fits the content. Nothing scrolls vertically; on mobile the conversation owns vertical panning and the host clips anything taller.
+- At most **two actions**, at the bottom.
+- **Four to five data points**. `DataList` warns in development past five.
+- No drill-ins, breadcrumbs or multiple views.
+
+The only scroll container in the library is `Scroller`, and it only scrolls sideways.
+
+## Layout
+
+Apps fill the container width. There are no fixed breakpoints: components reflow from **320px** up, using container queries where layout depends on width. Nothing uses viewport units for height.
+
+## Touch
+
+Every tap target is at least **44×44**, at every size, with space between neighbours. The Storybook test run measures this for every story. Links inside running text (`TextLink`) are the one exemption; use `ButtonLink` for standalone actions.
+
+## Visual
+
+Host tokens for structure (backgrounds, text, borders, icons). Brand colour for accents and identity only, via `--mcp-accent`. Three type levels and two weights. Monochrome outline icons. Both themes, always.
+
+## Loading
+
+Skeletons that match the final layout. There is no spinner in this library.
+
+## Accessibility
+
+WCAG AA contrast, full keyboard operation and a visible focus ring from `--color-ring-primary`. axe runs against every story in light and dark on each CI build.
+
+## Deliberately absent
+
+`Dropdown`, `Select`, `Popover`, `Tooltip`, `ContextMenu`, `Modal`, `Drawer`, `Spinner`, chat inputs and routers. These aren't gaps. If you need a menu, you need a `SegmentedControl` or a fullscreen view.

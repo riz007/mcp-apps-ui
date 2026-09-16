@@ -1,0 +1,23 @@
+@layer base {
+  html,
+  :host {
+    color: var(--mcp-text-primary);
+    font-family: var(--mcp-font-sans);
+    font-size: var(--mcp-text-md-size);
+    line-height: var(--mcp-text-md-line-height);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  [role="button"],
+  [role="radio"],
+  [role="tab"],
+  [role="switch"],
+  [role="slider"],
+  a {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}

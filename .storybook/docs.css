@@ -1,0 +1,13 @@
+.sb-story-frame {
+  background-color: var(--mcp-bg-primary);
+  color: var(--mcp-text-primary);
+}
+
+.docs-footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(0 0 0 / 10%);
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgb(0 0 0 / 60%);
+}

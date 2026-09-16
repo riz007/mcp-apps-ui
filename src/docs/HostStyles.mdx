@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Foundations/Theming and host styles" />
+
+# Theming and host styles
+
+## How tokens arrive
+
+Your app runs in a sandboxed frame, so it can't inherit Claude's CSS. The host sends style variables in `hostContext.styles.variables` and the theme in `hostContext.theme`. Applying them sets properties like `--color-background-primary` on `<html>` and `data-theme="dark"` when appropriate.
+
+Components never read those variables directly. They read `--mcp-*` properties from `tokens.css`:
+
+```css
+:root,
+[data-theme] {
+  --mcp-bg-secondary: var(--color-background-secondary, #f5f4ed);
+}
+
+[data-theme="dark"] {
+  --mcp-bg-secondary: var(--color-background-secondary, #262624);
+}
+```
+
+Host value first; published value second. The fallback only shows when a host sends a partial set, or nothing.
+
+## Dark mode
+
+`dark:` is remapped to `[data-theme="dark"]`, so it follows the host rather than the operating system. In practice you rarely need it: token utilities already switch.
+
+## The Storybook host toggle
+
+- **Claude host** sets every published variable on `<html>`, the way the bridge would. This is the default and what the accessibility tests run against.
+- **No host** removes them. Light mode then uses `standalone.css`, a stand-in palette from a community capture of anthropic.com's marketing site ([shadcn.io](https://www.shadcn.io/design/anthropic)). It is not the MCP Apps token set and never ships in the package. Dark mode falls through to the published fallbacks because that capture has no dark palette.
+
+## Text size
+
+The **Text size** toolbar multiplies the host's font-size variables, mimicking a host that honours the user's text-size setting. Layouts should still hold at 200%.

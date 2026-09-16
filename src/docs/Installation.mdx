@@ -1,0 +1,89 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Overview/Installation" />
+
+# Installation
+
+Requires React 18 or 19 and Tailwind CSS 4.
+
+## 1. Install
+
+```bash
+npm install mcp-apps-ui
+```
+
+## 2. Set up styles
+
+```css
+@import "tailwindcss";
+@import "mcp-apps-ui/css";
+/* Lets Tailwind find the class names used inside the components. */
+@source "../node_modules/mcp-apps-ui";
+```
+
+Import the stylesheet before rendering:
+
+```tsx
+import "./main.css"
+
+import { StrictMode } from "react"
+import { createRoot } from "react-dom/client"
+import { App } from "./App"
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+```
+
+## 3. Build
+
+```tsx
+import { Badge } from "mcp-apps-ui/components/Badge"
+import { Button } from "mcp-apps-ui/components/Button"
+
+export function Confirmation() {
+  return (
+    <div className="gap-4 p-4 flex w-full flex-col rounded-lg border border-default bg-surface">
+      <div className="gap-3 flex items-start justify-between">
+        <h2 className="heading-md">La Luna Bistro</h2>
+        <Badge color="success">Confirmed</Badge>
+      </div>
+      <Button block>Directions</Button>
+    </div>
+  )
+}
+```
+
+Everything is also exported from the package root (`import { Button } from "mcp-apps-ui"`). Per-component paths keep bundles small when your app is inlined into a single HTML resource.
+
+## Receiving host styles
+
+Claude doesn't share its stylesheet with your frame. It sends style variables and the current theme over the MCP Apps bridge, and your app applies them to the document. Until this library ships its own bridge package, use the helpers from the official SDK:
+
+```tsx
+import { useApp, useHostStyles } from "@modelcontextprotocol/ext-apps/react"
+```
+
+or, without React hooks:
+
+```ts
+import {
+  applyDocumentTheme,
+  applyHostFonts,
+  applyHostStyleVariables,
+} from "@modelcontextprotocol/ext-apps"
+
+app.onhostcontextchanged = (ctx) => {
+  if (ctx.theme) applyDocumentTheme(ctx.theme)
+  if (ctx.styles?.variables) applyHostStyleVariables(ctx.styles.variables)
+  if (ctx.styles?.css?.fonts) applyHostFonts(ctx.styles.css.fonts)
+}
+```
+
+`applyDocumentTheme` sets `data-theme` on `<html>`, which is what the token fallbacks and the `dark:` variant key off. If the host sends nothing, the published light and dark values are used.
+
+## Fonts
+
+No fonts are bundled. Inside Claude the host supplies Anthropic Sans at runtime. For local work, download the typefaces from [Anthropic's brand site](https://brand.anthropic.com/typography) under their terms.

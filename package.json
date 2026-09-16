@@ -35,7 +35,8 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "check:bundle": "node scripts/check-bundle.mjs",
-    "prepublishOnly": "npm run lint && npm run types && npm test && npm run build && npm run check:bundle"
+    "prepack": "npm run build && npm run check:bundle",
+    "prepublishOnly": "npm run lint && npm run types && npm test"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
@@ -80,6 +81,7 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "remark-gfm": "^4.0.1",
     "storybook": "^10.6.0",
     "stylelint": "^17.15.0",
     "stylelint-config-standard": "^40.0.0",

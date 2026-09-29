@@ -27,7 +27,7 @@ React 18 or 19, and Tailwind 4.
 **1. Install**
 
 ```bash
-npm install mcp-apps-ui
+npm install @riz007/mcp-apps-ui
 ```
 
 **2. Set up styles**

@@ -5,7 +5,7 @@
 Tailwind-integrated design tokens that map to Claude's host-injected style variables, a curated component set built for the MCP Apps design guidelines, and no floating UI — because the guidelines forbid it.
 
 ```bash
-npm install mcp-apps-ui
+npm install @riz007/mcp-apps-ui
 ```
 
 > **Not affiliated with, endorsed by, or sponsored by Anthropic PBC.** "Claude" and "Anthropic" are trademarks of Anthropic PBC. This is an independent open-source project built against publicly documented specifications.
